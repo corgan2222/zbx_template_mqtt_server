@@ -1,0 +1,473 @@
+{
+    "zabbix_export": {
+        "version": "5.2",
+        "date": "2021-04-05T19:32:57Z",
+        "groups": [
+            {
+                "name": "App templates"
+            }
+        ],
+        "templates": [
+            {
+                "template": "mosquitto MQTT Sys",
+                "name": "mosquitto MQTT Sys",
+                "description": "At the moment, many broker implementations implement some kind of $SYS topic but there isn't a common definition of required and optional $SYS topics for broker implementations yet.\n\nSYS-Topics\n\nMany MQTT brokers implement SYS-Topics. These topics are special meta topics that the broker can use to publish information about the broker itself and its MQTT client sessions. All SYS-Topics start with $SYS and are read-only for MQTT clients.",
+                "groups": [
+                    {
+                        "name": "App templates"
+                    }
+                ],
+                "applications": [
+                    {
+                        "name": "Mqtt"
+                    }
+                ],
+                "items": [
+                    {
+                        "name": "mosquitto bytes received",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/bytes/received,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "units": "B",
+                        "description": "$SYS/broker/bytes/received: The total number of bytes received since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto bytes sent",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/bytes/sent,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "units": "B",
+                        "description": "$SYS/broker/load/bytes/sent: The total number of bytes sent since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto clients connected",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/connected,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/clients/connected: The number of currently connected clients",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto clients disconnected",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/disconnected,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/clients/disconnected: The total number of persistent clients (with clean session disabled) that are registered at the broker but are currently disconnected.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto clients maximum",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/maximum,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/clients/maximum: The maximum number of active clients that have been connected to the broker. This is only calculated when the $SYS topic tree is updated, so short lived client connections may not be counted.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto clients total",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/total,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/clients/total: The total number of connected and disconnected clients with a persistent session currently connected and registered on the broker.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto load bytes received",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/load/bytes/received,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "units": "B",
+                        "description": "$SYS/broker/load/bytes/received: The total number of bytes received since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto load bytes sent",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/load/bytes/sent,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "units": "B",
+                        "description": "$SYS/broker/load/bytes/sent: The total number of bytes sent since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto messages publish dropped",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/publish/dropped,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/messages/publish/dropped: The total number of publish messages that have been dropped due to inflight/queuing limits.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto messages publish received",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/publish/received,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/messages/publish/received: The total number of PUBLISH messages received since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto messages publish sent",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/publish/sent,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/messages/publish/sent: The total number of PUBLISH messages sent since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto messages received",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/received,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/messages/received: The total number of messages of any type received since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto messages retained count",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/retained/count,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/messages/retained/count: The total number of retained messages active on the broker.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto messages sent",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/sent,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/messages/sent: The total number of messages of any type sent since the broker started.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto messages stored",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/stored,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/messages/stored: The number of messages currently held in the message store. This includes retained messages and messages queued for durable clients.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto subscriptions count",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/subscriptions/count,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "description": "$SYS/broker/subscriptions/count: The total number of subscriptions active on the broker.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto time",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/time,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "description": "$SYS/broker/time: The current time on the server.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "RTRIM",
+                                "parameters": [
+                                    " seconds"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto uptime",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/uptime,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "description": "$SYS/broker/uptime: The amount of time in seconds the broker has been online.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "RTRIM",
+                                "parameters": [
+                                    "seconds"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto version",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/version,{$MQTTUSER},{$MQTTPASSWORD}]",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "description": "$SYS/broker/version: The version of the broker. Static.",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "STR_REPLACE",
+                                "parameters": [
+                                    "mosquitto version ",
+                                    ""
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mosquitto broker reachable",
+                        "key": "net.tcp.port[{$MQTTBROKERIP},{$MQTTBROKERPORT}]",
+                        "applications": [
+                            {
+                                "name": "Mqtt"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "expression": "{max(#5)}=0",
+                                "name": "Unavailable by TCP",
+                                "priority": "HIGH",
+                                "description": "Last three attempts returned timeout.  Please check device connectivity."
+                            }
+                        ]
+                    }
+                ],
+                "macros": [
+                    {
+                        "macro": "{$MQTTBROKER}",
+                        "description": "Broker URI like tcp://host:1883"
+                    },
+                    {
+                        "macro": "{$MQTTBROKERIP}",
+                        "description": "Broker ip"
+                    },
+                    {
+                        "macro": "{$MQTTBROKERPORT}",
+                        "description": "Broker Port"
+                    },
+                    {
+                        "macro": "{$MQTTPASSWORD}",
+                        "description": "Broker password"
+                    },
+                    {
+                        "macro": "{$MQTTUSER}",
+                        "description": "Broker username"
+                    }
+                ],
+                "dashboards": [
+                    {
+                        "name": "Overview",
+                        "widgets": [
+                            {
+                                "type": "GRAPH_CLASSIC",
+                                "x": "1",
+                                "y": "1",
+                                "width": "12",
+                                "height": "5",
+                                "fields": [
+                                    {
+                                        "type": "GRAPH",
+                                        "name": "graphid",
+                                        "value": {
+                                            "name": "MQTT Clients",
+                                            "host": "mosquitto MQTT Sys"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "GRAPH_CLASSIC",
+                                "x": "1",
+                                "y": "6",
+                                "width": "12",
+                                "height": "5",
+                                "fields": [
+                                    {
+                                        "type": "GRAPH",
+                                        "name": "graphid",
+                                        "value": {
+                                            "name": "MQTT Messages",
+                                            "host": "mosquitto MQTT Sys"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "GRAPH_CLASSIC",
+                                "x": "1",
+                                "y": "11",
+                                "width": "12",
+                                "height": "5",
+                                "fields": [
+                                    {
+                                        "type": "GRAPH",
+                                        "name": "graphid",
+                                        "value": {
+                                            "name": "MQTT Traffic  Counts",
+                                            "host": "mosquitto MQTT Sys"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "graphs": [
+            {
+                "name": "MQTT Clients",
+                "graph_items": [
+                    {
+                        "sortorder": "1",
+                        "color": "199C0D",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/connected,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    },
+                    {
+                        "sortorder": "2",
+                        "color": "F63100",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/disconnected,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    },
+                    {
+                        "sortorder": "3",
+                        "drawtype": "DOTTED_LINE",
+                        "color": "2774A4",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/maximum,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    },
+                    {
+                        "sortorder": "4",
+                        "drawtype": "DASHED_LINE",
+                        "color": "F7941D",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/clients/total,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "MQTT Messages",
+                "graph_items": [
+                    {
+                        "sortorder": "1",
+                        "color": "199C0D",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/received,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    },
+                    {
+                        "sortorder": "2",
+                        "color": "F63100",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/messages/sent,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "MQTT Traffic  Counts",
+                "graph_items": [
+                    {
+                        "sortorder": "1",
+                        "color": "199C0D",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/bytes/received,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    },
+                    {
+                        "sortorder": "2",
+                        "color": "F63100",
+                        "item": {
+                            "host": "mosquitto MQTT Sys",
+                            "key": "mqtt.get[{$MQTTBROKER},$SYS/broker/bytes/sent,{$MQTTUSER},{$MQTTPASSWORD}]"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
