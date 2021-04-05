@@ -1,5 +1,5 @@
 
-# Zabbix 5.2 mosquitto MQTT Template
+# Zabbix 5.2 mosquitto $SYS Topic MQTT Template
 
 ![](https://raw.githubusercontent.com/corgan2222/zbx_template_mqtt_server/main/images/zabbix_dashboard.png)
 
