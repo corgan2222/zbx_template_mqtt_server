@@ -1,5 +1,5 @@
 
-# Zabbix 5.2 mosquitto MQTT $SYS Topic Template
+# Zabbix 5.2 mosquitto MQTT Template
 
 ![](https://raw.githubusercontent.com/corgan2222/zbx_template_mqtt_server/main/images/zabbix_dashboard.png)
 
@@ -41,9 +41,7 @@
 - Zabbix Server 5.2
 - Zabbix Agent 2 active
 - Zabbix Agent 2 MQTT plugin. -
-This plugin provides a native solution for monitoring messages published by MQTT brokers. The plugin can monitor several broker instances simultaneously via Zabbix agent 2. Proxy and websocket connections are supported. The plugin keeps all subscriptions to a single broker in one connection to reduce network strain. The plugin supports active checks only.
-
-https://git.zabbix.com/projects/ZBX/repos/zabbix/browse/src/go/plugins/mqtt?at=refs%2Fheads%2Frelease%2F5.2
+This plugin provides a native solution for monitoring messages published by MQTT brokers. The plugin can monitor several broker instances simultaneously via Zabbix agent 2. Proxy and websocket connections are supported. The plugin keeps all subscriptions to a single broker in one connection to reduce network strain. The plugin supports active checks only. https://git.zabbix.com/projects/ZBX/repos/zabbix/browse/src/go/plugins/mqtt?at=refs%2Fheads%2Frelease%2F5.2
 
 ## Installation 
 
@@ -92,6 +90,10 @@ https://github.com/corgan2222/zbx_template_mqtt_server/tree/main/grafana
 import the JSON Model and choose your zabbix database
 change the variables if needed.
 
+## Troubleshooting
+
+The plugin uses Zabbix agent 2 logs. To receive more detailed information about logged events, consider increasing a debug level of Zabbix agent 2.
+
 ## DISCLAIMER:
 from: https://www.hivemq.com/blog/why-you-shouldnt-use-sys-topics-for-monitoring/
 ## SYS-Topics: Why you shouldn’t use SYS-Topics for Monitoring
@@ -104,24 +106,24 @@ We highly recommend that you disable SYS-Topics completely for production system
 
  5 reasons SYS-Topics are not suitable for production monitoring:
 
-1. Metric resolution is not good enough
+### 1. Metric resolution is not good enough
 
 The metric publishing interval for most MQTT brokers is 60 seconds by default. Monitoring interfaces like JMX allow to poll the most current data whenever needed. So the broker does not dictate the monitoring system how the resolution should be. The monitoring system can decide how often new data should be collected, without modifying any configuration on the MQTT broker.
 
-2. SYS-Topics provide only a subset of the available metrics
+### 2. SYS-Topics provide only a subset of the available metrics
 
 While the metrics provided by SYS-Topics can be useful, they are only a small subset of all available metrics. For example, HiveMQ exposes more than 100 different metrics (the number of exposed metrics also increase with every release). The SYS-Topic Metrics usually are more focused on MQTT session monitoring and thus don’t provide metrics that can give you an overview of the brokers health at a quick glance. The most interesting metrics for operation teams are usually product dependant, so it’s unlikely that a common SYS-Topic standard will cover these in the future.
 
-3. SYS-Topics expose internal information to potential attackers
+### 3. SYS-Topics expose internal information to potential attackers
 
 To make it more difficult for an attacker to use exploits that target a specific software version, it is a common best practice to conceal the actual software version that is used in a deployment. Frequently, you also want to hide the actual software that is used from attackers. While you should never rely on ‘Security by Obscurity’ as your primary security measure, it’s still important to hide this deployment information. SYS-Topics expose key information such as the Broker Software Used and the Version Number to every subscriber. This information can be valuable for attackers but is seldom useful to legitimate subscribers.
 
 
-4. It’s hard to monitor broker clusters with SYS-Topics
+### 4. It’s hard to monitor broker clusters with SYS-Topics
 
 If someone wants to build a custom monitoring solution based on SYS-Topics, MQTT connections to all cluster nodes need to be established. Typically MQTT clusters are behind a load balancer, so often it’s not even possible to connect to a specific cluster node. Monitoring integrations such as Graphite are built with clustering in mind and so it’s easy to get a quick health overview of the whole cluster. That’s much harder to achieve with SYS-Topics.
 
-5. The monitored channel should be separated from the monitoring channel
+### 5. The monitored channel should be separated from the monitoring channel
 
 A good monitoring practice is to use a dedicated monitoring channel instead of using the same channel you are monitoring. With MQTT brokers, this means that if you are monitoring the MQTT communication, you shouldn’t use MQTT (SYS-Topics) to monitor the MQTT communication. It’s the same as: Don’t use e-mail alerts for monitoring e-mail servers. If the MQTT communication is not available for any reason, you won’t get any monitoring data. The monitoring data may be most valuable especially when unexpected occurs. If you rely on this data for the alert, you may have a problem. If you’re using a dedicated monitoring channel such as JMX, Graphite, or Nagios, a problem with the MQTT communication should not affect your monitoring.
 
