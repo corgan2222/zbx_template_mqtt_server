@@ -1,6 +1,9 @@
 
 # Zabbix 5.2 mosquitto MQTT Template
 
+![](https://raw.githubusercontent.com/corgan2222/zbx_template_mqtt_server/main/images/zabbix_dashboard.png)
+
+![](https://raw.githubusercontent.com/corgan2222/zbx_template_mqtt_server/main/images/grafana_dashbaord.png)
 
 
 ## Features
@@ -34,6 +37,7 @@
 
 ## Requirements
 
+- mosquitto server (not testet with other brokers)
 - Zabbix Server 5.2
 - Zabbix Agent 2 active
 - Zabbix Agent 2 MQTT plugin. -
@@ -44,6 +48,7 @@ https://git.zabbix.com/projects/ZBX/repos/zabbix/browse/src/go/plugins/mqtt?at=r
 ## Installation 
 
 you can use this template with any zabbix agent2 and a zabbix server >5.2. 
+Download the template you like (yaml,josn,xml). There all the same content.
 
 Install the template and Inherited the template macros. Insert the macro data, like broker ip.
 
@@ -80,6 +85,9 @@ The topic may contain wildcards ("+","#"). If the topic contains a wildcard the 
 https://git.zabbix.com/projects/ZBX/repos/zabbix/browse/src/go/plugins/mqtt?at=refs%2Fheads%2Frelease%2F5.2
 
 ## Grafana Dashboard:
+
+Download Grafana Dashboard
+https://github.com/corgan2222/zbx_template_mqtt_server/tree/main/grafana
 
 import the JSON Model and choose your zabbix database
 change the variables if needed.
@@ -120,4 +128,3 @@ A good monitoring practice is to use a dedicated monitoring channel instead of u
 ## Meta
 
 Stefan Knaak – stefan@knaak.org
-![](https://corgan2222.github.io/dotfiles/)
