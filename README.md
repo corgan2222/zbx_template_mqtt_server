@@ -85,6 +85,7 @@ https://git.zabbix.com/projects/ZBX/repos/zabbix/browse/src/go/plugins/mqtt?at=r
 ## Grafana Dashboard:
 
 Download Grafana Dashboard
+https://grafana.com/grafana/dashboards/14186
 https://github.com/corgan2222/zbx_template_mqtt_server/tree/main/grafana
 
 import the JSON Model and choose your zabbix database
